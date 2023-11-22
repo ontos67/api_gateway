@@ -1,0 +1,305 @@
+2023/11/22 21:39:34 Запуск службы...
+2023/11/22 21:39:34 Запуск сервера. Порт: 80...
+2023/11/22 21:39:34 listen tcp :80: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+2023/11/22 21:45:28 Запуск службы...
+2023/11/22 21:45:28 Запуск сервера. Порт: 80...
+2023/11/22 21:45:28 listen tcp :80: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+2023/11/22 21:47:29 Запуск службы...
+2023/11/22 21:47:29 Запуск сервера. Порт: 80...
+2023/11/22 21:47:29 listen tcp :80: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+2023/11/22 21:51:29 Запуск службы...
+2023/11/22 21:51:29 Запуск сервера. Порт: 80...
+2023/11/22 21:57:56 Запуск службы...
+2023/11/22 21:57:56 Запуск сервера. Порт: 80...
+2023/11/22 22:04:30 Запуск службы...
+2023/11/22 22:04:30 Запуск сервера. Порт: 80...
+2023/11/22 22:05:59 http: panic serving [::1]:15844: runtime error: invalid memory address or nil pointer dereference
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c000}, 0xc000064200)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc000064100?, {0xbc6720?, 0xc00007c000?}, 0x24f733bbda8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c000}, 0xc000064000)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000022060?}, {0xbc6720?, 0xc00007c000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000114000, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:05:59 http: panic serving [::1]:15859: runtime error: invalid memory address or nil pointer dereference
+goroutine 52 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc000258000}, 0xc00020c300)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc00020c200?, {0xbc6720?, 0xc000258000?}, 0x24f733bbda8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc000258000}, 0xc00020c100)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc00020a2d0?}, {0xbc6720?, 0xc000258000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000298000, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:06:00 http: panic serving [::1]:15864: runtime error: invalid memory address or nil pointer dereference
+goroutine 47 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c0e0}, 0xc000064600)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc000064500?, {0xbc6720?, 0xc00007c0e0?}, 0x24f733bbda8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c0e0}, 0xc000064400)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000022660?}, {0xbc6720?, 0xc00007c0e0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc0002083f0, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:06:01 http: panic serving [::1]:15869: runtime error: invalid memory address or nil pointer dereference
+goroutine 74 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00012a000}, 0xc0000f6400)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0000f6300?, {0xbc6720?, 0xc00012a000?}, 0x24f733bbda8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00012a000}, 0xc000064800)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000022b40?}, {0xbc6720?, 0xc00012a000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc00006e510, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:06:01 http: panic serving [::1]:15873: runtime error: invalid memory address or nil pointer dereference
+goroutine 58 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c1c0}, 0xc000064c00)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc000064b00?, {0xbc6720?, 0xc00007c1c0?}, 0x24f733bbda8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c1c0}, 0xc0000f6600)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000089aa0?}, {0xbc6720?, 0xc00007c1c0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000298240, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:06:02 http: panic serving [::1]:15874: runtime error: invalid memory address or nil pointer dereference
+goroutine 82 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc0002580e0}, 0xc00020c800)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc00020c700?, {0xbc6720?, 0xc0002580e0?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc0002580e0}, 0xc0002aa100)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000290480?}, {0xbc6720?, 0xc0002580e0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000114360, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:06:02 http: panic serving [::1]:15883: runtime error: invalid memory address or nil pointer dereference
+goroutine 124 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c2a0}, 0xc000065100)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc000065000?, {0xbc6720?, 0xc00007c2a0?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c2a0}, 0xc000064e00)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000023200?}, {0xbc6720?, 0xc00007c2a0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc0002086c0, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:06:06 http: panic serving [::1]:15888: runtime error: invalid memory address or nil pointer dereference
+goroutine 146 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00012a0e0}, 0xc0000f6c00)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0000f6b00?, {0xbc6720?, 0xc00012a0e0?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00012a0e0}, 0xc0000f6900)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000089ef0?}, {0xbc6720?, 0xc00012a0e0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000208870, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:07:38 http: panic serving [::1]:15889: runtime error: invalid memory address or nil pointer dereference
+goroutine 148 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00012a380}, 0xc0000f7400)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0000f7300?, {0xbc6720?, 0xc00012a380?}, 0x24f733bbcb0?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00012a380}, 0xc0000f7100)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000023680?}, {0xbc6720?, 0xc00012a380?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000208990, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:07:38 http: panic serving [::1]:15939: runtime error: invalid memory address or nil pointer dereference
+goroutine 64 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c380}, 0xc000065600)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc000065500?, {0xbc6720?, 0xc00007c380?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c380}, 0xc0000f7000)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc0001407e0?}, {0xbc6720?, 0xc00007c380?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc0002983f0, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:07:38 http: panic serving [::1]:15948: runtime error: invalid memory address or nil pointer dereference
+goroutine 161 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc0002d4000}, 0xc0002aa500)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0002aa400?, {0xbc6720?, 0xc0002d4000?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc0002d4000}, 0xc0002aa200)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000290780?}, {0xbc6720?, 0xc0002d4000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000208ea0, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:07:43 http: panic serving [::1]:15954: runtime error: invalid memory address or nil pointer dereference
+goroutine 203 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc0002d40e0}, 0xc0002aaa00)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0002aa900?, {0xbc6720?, 0xc0002d40e0?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc0002d40e0}, 0xc0002aa700)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000290a50?}, {0xbc6720?, 0xc0002d40e0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc00006efc0, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:08:13 http: panic serving [::1]:15955: runtime error: invalid memory address or nil pointer dereference
+goroutine 227 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c460}, 0xc000065c00)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc000065b00?, {0xbc6720?, 0xc00007c460?}, 0x24f733bbcb0?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c460}, 0xc000065900)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc0001fc060?}, {0xbc6720?, 0xc00007c460?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000208fc0, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:08:13 http: panic serving [::1]:15963: runtime error: invalid memory address or nil pointer dereference
+goroutine 258 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c540}, 0xc0003ae100)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0003ae000?, {0xbc6720?, 0xc00007c540?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c540}, 0xc0000f7600)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000140d20?}, {0xbc6720?, 0xc00007c540?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000298900, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:08:13 http: panic serving [::1]:15972: runtime error: invalid memory address or nil pointer dereference
+goroutine 235 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00012a460}, 0xc0000f7a00)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0000f7900?, {0xbc6720?, 0xc00012a460?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00012a460}, 0xc0000f7700)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000140ed0?}, {0xbc6720?, 0xc00012a460?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000209170, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:09:13 http: panic serving [::1]:16031: runtime error: invalid memory address or nil pointer dereference
+goroutine 263 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1868 +0xb9
+panic({0xaf40e0?, 0xd82c80?})
+	C:/Program Files/Go/src/runtime/panic.go:920 +0x270
+cmd/pkg/api2.newsHandler({0xbc6720?, 0xc00007c620}, 0xc0003ae600)
+	D:/go/api_gateway/pkg/api2/NewsHandler.go:135 +0x61c
+net/http.HandlerFunc.ServeHTTP(0xc0003ae500?, {0xbc6720?, 0xc00007c620?}, 0x24f733bbbb8?)
+	C:/Program Files/Go/src/net/http/server.go:2136 +0x29
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000100000, {0xbc6720, 0xc00007c620}, 0xc0000f7c00)
+	D:/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1c5
+net/http.serverHandler.ServeHTTP({0xc000141350?}, {0xbc6720?, 0xc00007c620?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:2938 +0x8e
+net/http.(*conn).serve(0xc000298a20, {0xbc6d18, 0xc000089410})
+	C:/Program Files/Go/src/net/http/server.go:2009 +0x5f4
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3086 +0x5cb
+2023/11/22 22:26:55 Запуск службы...
+2023/11/22 22:26:55 Запуск сервера. Порт: 80...

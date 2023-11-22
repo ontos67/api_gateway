@@ -3,6 +3,7 @@ package api2
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -27,7 +28,7 @@ func lastHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	url := "http://localhost:9998/news/last?" + paramToPass
+	url := "http://localhost:998/news/last?" + paramToPass
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -50,6 +51,7 @@ func lastHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	p.Page = a[p.ItemPerPage*(p.PageN-1) : p.ItemPerPage*p.PageN-2]
 	json.NewEncoder(w).Encode(p)
+	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
 }
 
 func lastListHandler(w http.ResponseWriter, r *http.Request) {
@@ -59,7 +61,7 @@ func lastListHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	paramToPass := r.URL.Query().Encode()
-	url := "http://localhost:9998/news/lastlist?" + paramToPass
+	url := "http://localhost:998/news/lastlist?" + paramToPass
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -71,6 +73,7 @@ func lastListHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(a)
+	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
 }
 
 func filterHandler(w http.ResponseWriter, r *http.Request) {
@@ -80,7 +83,7 @@ func filterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	paramToPass := r.URL.Query().Encode()
-	url := "http://localhost:9998/news/filter?" + paramToPass
+	url := "http://localhost:998/news/filter?" + paramToPass
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -92,6 +95,7 @@ func filterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(a)
+	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
 }
 
 // newsHandler асинхронно собирает статью и слайс комментариев первого уровня
@@ -137,6 +141,7 @@ func newsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	close(aChan)
 	json.NewEncoder(w).Encode(a)
+	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
 }
 
 // Синхронная версия
@@ -147,7 +152,7 @@ func newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	paramToPass := r.URL.Query().Encode()
-	url := "http://localhost:9998/news/news?" + paramToPass
+	url := "http://localhost:998/news/news?" + paramToPass
 
 	resp, err := callOtherAPI(url)
 	if err != nil {
@@ -159,7 +164,7 @@ func newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	url = "http://localhost:9999/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", a.ID)
+	url = "http://localhost:999/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", a.ID)
 	resp, err = callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -171,11 +176,12 @@ func newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(a)
+	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
 }
 
 func articleRequest(id int, ch chan<- interface{}) {
 	agr := Article{}
-	url := "http://localhost:9998/news/news?id=" + fmt.Sprintf("%d", id)
+	url := "http://localhost:998/news/news?id=" + fmt.Sprintf("%d", id)
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		ch <- err
@@ -191,7 +197,7 @@ func articleRequest(id int, ch chan<- interface{}) {
 func commentsRequest(id int, ch chan<- interface{}) {
 
 	var c []Comment
-	url := "http://localhost:9999/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", id)
+	url := "http://localhost:999/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", id)
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		ch <- err

@@ -47,15 +47,15 @@ func (api *API) Router() *mux.Router {
 	return api.r
 }
 
-//ок Comments.saveCom http://localhost:9999/comment/save?userid=64&text=заманали%20комары&pubtime=12344134&ptype=A&pid=2345
-//ок Comments.deleteCom http://localhost:9999/comment/del?id=64
-// Comments.comListP (Parent) http://localhost:9999/comment/comListP?pT=C&pId=47
-// Comments.comListP по паганацией (Parent) http://localhost:9999/comment/comListP?pT=C&pId=47&page=2
+//ок Comments.saveCom http://localhost:999/comment/save?userid=64&text=заманали%20комары&pubtime=12344134&ptype=A&pid=2345
+//ок Comments.deleteCom http://localhost:999/comment/del?id=64
+// Comments.comListP (Parent) http://localhost:999/comment/comListP?pT=C&pId=47
+// Comments.comListP по паганацией (Parent) http://localhost:999/comment/comListP?pT=C&pId=47&page=2
 
-//ok news.lastArticles http://localhost:9998/news/last?n=100&itemperpage=5&page=2
-//ok news.lastArticlesList http://localhost:9998/news/lastlist?n=5
-//ok news.newsFilteredDetailed http://localhost:9998/news/filter?time1=1699016144&time2=1700293140&lim=0&field=title&contains=putin&sortfield=id&dir=s
-//ok news.newsFullDetailed http://localhost:9998/news/news?id=5
+//ok news.lastArticles http://localhost:998/news/last?n=100&itemperpage=5&page=2
+//ok news.lastArticlesList http://localhost:998/news/lastlist?n=5
+//ok news.newsFilteredDetailed http://localhost:998/news/filter?time1=1699016144&time2=1700293140&lim=0&field=title&contains=putin&sortfield=id&dir=s
+//ok news.newsFullDetailed http://localhost:998/news/news?id=5
 
 func (api *API) endpoints() {
 	api.r.HandleFunc("/comment/save", commentSaveHandler)
