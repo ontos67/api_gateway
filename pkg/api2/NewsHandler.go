@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func lastHandler(w http.ResponseWriter, r *http.Request) {
+func (api *API) lastHandler(w http.ResponseWriter, r *http.Request) {
 	var a []Article
 	var p Paging
 	var err error
@@ -28,7 +28,7 @@ func lastHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	url := "http://localhost:998/news/last?" + paramToPass
+	url := api.Conf.Agrigator + "/news/last?" + paramToPass
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -51,17 +51,17 @@ func lastHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	p.Page = a[p.ItemPerPage*(p.PageN-1) : p.ItemPerPage*p.PageN-2]
 	json.NewEncoder(w).Encode(p)
-	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
+	log.Println("API_Gateway: API: lastHandler:", "ok ", r.URL.Query().Encode())
 }
 
-func lastListHandler(w http.ResponseWriter, r *http.Request) {
+func (api *API) lastListHandler(w http.ResponseWriter, r *http.Request) {
 	var a []Article
 	if r.Method != "GET" {
 		errorHandler(w, http.StatusMethodNotAllowed, "Method not allowed")
 		return
 	}
 	paramToPass := r.URL.Query().Encode()
-	url := "http://localhost:998/news/lastlist?" + paramToPass
+	url := api.Conf.Agrigator + "/news/lastlist?" + paramToPass
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -73,17 +73,17 @@ func lastListHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(a)
-	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
+	log.Println("API_Gateway: API:lastListHandler: ", "ok ", r.URL.Query().Encode())
 }
 
-func filterHandler(w http.ResponseWriter, r *http.Request) {
+func (api *API) filterHandler(w http.ResponseWriter, r *http.Request) {
 	var a []Article
 	if r.Method != "GET" {
 		errorHandler(w, http.StatusMethodNotAllowed, "Method not allowed")
 		return
 	}
 	paramToPass := r.URL.Query().Encode()
-	url := "http://localhost:998/news/filter?" + paramToPass
+	url := api.Conf.Agrigator + "/news/filter?" + paramToPass
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -95,11 +95,11 @@ func filterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(a)
-	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
+	log.Println("API_Gateway: API:filterHandler:", "ok ", r.URL.Query().Encode())
 }
 
 // newsHandler асинхронно собирает статью и слайс комментариев первого уровня
-func newsHandler(w http.ResponseWriter, r *http.Request) {
+func (api *API) newsHandler(w http.ResponseWriter, r *http.Request) {
 	a := Article{}
 	if r.Method != "GET" {
 		errorHandler(w, http.StatusMethodNotAllowed, "Method not allowed")
@@ -113,8 +113,8 @@ func newsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	aChan := make(chan interface{}, 2)
-	go articleRequest(id, aChan)
-	go commentsRequest(id, aChan)
+	go api.articleRequest(id, aChan)
+	go api.commentsRequest(id, aChan)
 
 	ex1, ex2 := true, true
 	for ex1 || ex2 {
@@ -141,18 +141,18 @@ func newsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	close(aChan)
 	json.NewEncoder(w).Encode(a)
-	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
+	log.Println("API_Gateway: API:newsHandler: ", "ok ", r.URL.Query().Encode())
 }
 
 // Синхронная версия
-func newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
+func (api *API) newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
 	a := Article{}
 	if r.Method != "GET" {
 		errorHandler(w, http.StatusMethodNotAllowed, "Method not allowed")
 		return
 	}
 	paramToPass := r.URL.Query().Encode()
-	url := "http://localhost:998/news/news?" + paramToPass
+	url := api.Conf.Agrigator + "/news/news?" + paramToPass
 
 	resp, err := callOtherAPI(url)
 	if err != nil {
@@ -164,7 +164,7 @@ func newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	url = "http://localhost:999/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", a.ID)
+	url = api.Conf.Agrigator + "/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", a.ID)
 	resp, err = callOtherAPI(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -176,12 +176,12 @@ func newsHandlerSynh(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	json.NewEncoder(w).Encode(a)
-	log.Println("API_Gateway: API: ", "ok ", r.URL.Query().Encode())
+	log.Println("API_Gateway: API: newsHandlerSynh", "ok ", r.URL.Query().Encode())
 }
 
-func articleRequest(id int, ch chan<- interface{}) {
+func (api *API) articleRequest(id int, ch chan<- interface{}) {
 	agr := Article{}
-	url := "http://localhost:998/news/news?id=" + fmt.Sprintf("%d", id)
+	url := api.Conf.Agrigator + "/news/news?id=" + fmt.Sprintf("%d", id)
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		ch <- err
@@ -194,10 +194,10 @@ func articleRequest(id int, ch chan<- interface{}) {
 	}
 	ch <- agr
 }
-func commentsRequest(id int, ch chan<- interface{}) {
+func (api *API) commentsRequest(id int, ch chan<- interface{}) {
 
 	var c []Comment
-	url := "http://localhost:999/comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", id)
+	url := api.Conf.Commentator + "comment/comListP?pT=A&pId=" + fmt.Sprintf("%d", id)
 	resp, err := callOtherAPI(url)
 	if err != nil {
 		ch <- err

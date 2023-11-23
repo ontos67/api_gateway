@@ -5,7 +5,8 @@ import (
 )
 
 type API struct {
-	r *mux.Router
+	r    *mux.Router
+	Conf Config
 }
 
 type pPage interface{}
@@ -15,6 +16,12 @@ type Paging struct {
 	ItemPerPage int
 	PageN       int
 	Page        pPage
+}
+
+type Config struct {
+	Port        string `json:"port"`
+	Commentator string `json:"commentator"`
+	Agrigator   string `json:"agrigator"`
 }
 
 type Article struct {
@@ -58,14 +65,14 @@ func (api *API) Router() *mux.Router {
 //ok news.newsFullDetailed http://localhost:998/news/news?id=5
 
 func (api *API) endpoints() {
-	api.r.HandleFunc("/comment/save", commentSaveHandler)
-	api.r.HandleFunc("/comment/del", commentDelHandler)
-	api.r.HandleFunc("/comment/comListP", commenListPHandler)
-	api.r.HandleFunc("/comment/comListPPage", commenListPHandler)
+	api.r.HandleFunc("/comment/save", api.commentSaveHandler)
+	api.r.HandleFunc("/comment/del", api.commentDelHandler)
+	api.r.HandleFunc("/comment/comListP", api.commenListPHandler)
+	api.r.HandleFunc("/comment/comListPPage", api.commenListPHandler)
 
-	api.r.HandleFunc("/news/last", lastHandler)
-	api.r.HandleFunc("/news/lastlist", lastListHandler)
-	api.r.HandleFunc("/news/filter", filterHandler)
-	api.r.HandleFunc("/news/news", newsHandler)
-	api.r.HandleFunc("/news/newss", newsHandlerSynh)
+	api.r.HandleFunc("/news/last", api.lastHandler)
+	api.r.HandleFunc("/news/lastlist", api.lastListHandler)
+	api.r.HandleFunc("/news/filter", api.filterHandler)
+	api.r.HandleFunc("/news/news", api.newsHandler)
+	api.r.HandleFunc("/news/newss", api.newsHandlerSynh)
 }

@@ -1,0 +1,5 @@
+{
+   "port": ":80",
+   "commentator":"http://localhost:999",
+   "agrigator":"http://localhost:998"
+}
